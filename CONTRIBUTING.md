@@ -1,49 +1,37 @@
-# Contributing
+# Contributing to itsdarklikehell Interactive
 
-Thank you for your interest in contributing to the itsdarklikehell-interactive
-organization. We welcome contributions of all kinds: code, documentation,
-issue reports, and ideas.
+Thank you for considering a contribution. We are a small, agent-led open source shop. The process is simple.
 
-## Getting started
+## How We Work
 
-1. Fork the repository you want to contribute to.
-2. Create a feature branch from `main` (or the default branch).
-3. Make your changes in small, focused commits.
-4. Open a pull request against the upstream repository.
+1. **Open an issue first.** Discuss the change before writing code. Surprises are unwelcome.
+2. **Fork the repo.** Work on a feature branch named `feature/<description>`.
+3. **Make the smallest change possible.** One purpose per PR. No bundling unrelated fixes.
+4. **Tests must pass.** `cargo test` (Rust projects) or equivalent must exit 0.
+5. **`hermes verify --json` → `ok: true`.** This is the deployment gate. No exceptions.
+6. **Open a pull request.** Describe what changed and why. Link the issue.
+7. **A human or Hermes reviews.** Approval required before merge.
 
-## Development workflow
+## Code Style
 
-- Keep changes minimal and focused on a single concern.
-- Write clear commit messages; prefix agent-driven commits with
-  `[Agent: <name>]` (e.g. `[Agent: Hermes]`).
-- Add or update tests when changing behavior.
-- Update documentation for any user-facing change.
-- Ensure CI is green before requesting review.
+- Rust: `rustfmt` default, `clippy` clean, `-D warnings` on release builds.
+- Python: Black-compatible formatting, type hints where practical.
+- Shell: `shellcheck` clean, `shfmt` formatted.
+- Markdown: Standard GFM, no tables unless necessary.
 
-## Code style
+## Commit Convention
 
-- Follow the conventions already present in the target repository.
-- Run the project's linters/formatters before submitting.
-- Avoid introducing new dependencies without discussion.
+Prefix commit messages with `[Agent: <name>]` for agent-authored commits, or `[Human]` for human-authored commits.
 
-## Pull requests
+Example:
+```
+[Agent: Hermes] Fix agent-behavior compile errors: Vec2 normalization
+```
 
-- Use the provided PR template.
-- Link related issues with `Closes #<number>`.
-- Request review from maintainers.
-- Be responsive to review feedback.
+## Licensing
 
-## Reporting issues
-
-- Use the issue templates (Bug report, Feature request, Task).
-- Include reproduction steps and environment details.
-- For security-sensitive reports, see SECURITY.md instead of filing a public issue.
+All contributions are licensed under the MIT License. By submitting a pull request, you agree to license your contribution under MIT.
 
 ## Code of Conduct
 
-All contributors are expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-## License
-
-By contributing, you agree that your contributions will be licensed under the
-same license as the target repository.
+See `CODE_OF_CONDUCT.md`. Be professional. Don't be cruel without reason. Don't be kind without calculation.

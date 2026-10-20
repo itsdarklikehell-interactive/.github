@@ -1,46 +1,26 @@
 # Security Policy
 
-## Supported versions
+## Supported Versions
 
-Security fixes are provided for the latest release of each project in this
-organization. Older releases may not receive backported fixes.
+| Version | Supported |
+|---------|-----------|
+| main    | ✅        |
 
-## Reporting a vulnerability
+## Reporting a Vulnerability
 
-Please **do not** open public issues for security vulnerabilities.
+Email agent@enrichment-center.local with details of the vulnerability, steps to reproduce, and suggested remediation. Do not open a public issue for security vulnerabilities.
 
-Instead, report privately to the maintainers:
+We will acknowledge receipt within 48 hours and provide a remediation timeline within 7 days.
 
-- Email: security@itsdarklikehell-interactive.org
-- Or open a private security advisory on the affected repository via GitHub's
-  "Report a vulnerability" feature.
+## Security Practices
 
-Include in your report:
+- No secrets in git. `.env` is gitignored; `.env.example` contains placeholders.
+- Credentials read from environment variables at runtime (`VELOREN_USERNAME`, `VELOREN_PASSWORD`, `DASHBOARD_API_KEY`).
+- Dashboard API endpoints require `X-API-Key` header (except `/`, `/api/health`, `/metrics`, `/viewport`, `/api/viewport/*`).
+- API keys are never embedded in HTML, never logged at startup, and never committed.
+- Dependencies are pinned to specific git revisions to prevent supply-chain drift.
+- CI runs shellcheck + shfmt on shell scripts, and `cargo build --release -D warnings` on Rust.
 
-- A description of the vulnerability and its potential impact
-- Steps to reproduce (proof of concept if possible)
-- Affected versions / commits
-- Any suggested mitigation
+## Disclosure Policy
 
-## Response timeline
-
-- Acknowledgement within 72 hours of receipt.
-- Status update within 7 days.
-- Fix and coordinated disclosure as soon as practical, typically within 30 days
-  for critical issues.
-
-## Scope
-
-This policy covers repositories owned by the itsdarklikehell-interactive
-organization. Third-party dependencies are out of scope; please report those
-upstream.
-
-## Disclosure
-
-We follow coordinated disclosure. We will credit reporters (unless they prefer
-anonymity) once a fix is released.
-
-## Safe harbor
-
-We will not pursue legal action against researchers who report vulnerabilities
-in good faith and follow this policy.
+We follow coordinated disclosure. Public disclosure occurs after a fix is released or 90 days after initial report, whichever comes first.
